@@ -7,8 +7,8 @@ class HighScoreService(object):
 
     def __init__(self):
         # constructor
-        self.table_all = [{'player_id':0, 'score':0}]
-        self.table_last_hour = [{'player_id':0, 'score':0}]
+        self.table_all = [{'player_id': 0, 'score': 0}]
+        self.table_last_hour = [{'player_id': 0, 'score': 0}]
         pass
 
     def add_score(self, player_id, score):
@@ -17,12 +17,12 @@ class HighScoreService(object):
 
     def get_table(self):
         # Returns the table ordered by ranking.
-        self.table_all = [{'player_id':0, 'score':0}]
+        self.table_all = [{'player_id': 0, 'score': 0}]
         return self.table_all
 
     def get_last_hour_table(self):
         # Returns the table ordered by ranking.
-        self.table_last_hour = [{'player_id':0, 'score':0}]
+        self.table_last_hour = [{'player_id': 0, 'score': 0}]
         return self.table_last_hour
 
     def update(self):
@@ -31,31 +31,34 @@ class HighScoreService(object):
         return self.table_all, self.table_last_hour
 
     def tableToStr(self, table):
-      str_=''
-      for e in table:
-         str_ += ('{}-{}\n').format(e['player_id'], e['score'])
-      return str_
+        str_ = ''
+        for e in table:
+            str_ += ('{}-{}\n').format(e['player_id'], e['score'])
+        return str_
 
     def __str__(self):
-         str_ = 'High Scores: \n'
-         str_ = 'Historic Scores: \n'
-         str_ +=''.join([('{}-{}\n').format(e['player_id'], e['score']) for e in self.table_all])
-         str_ += '---------\n'
-         str_ += 'Last Hour Scores\n'
-         str_ +=''.join([('{}-{}\n').format(e['player_id'], e['score']) for e in self.table_last_hour])
-         return str_
+        str_ = 'High Scores: \n'
+        str_ = 'Historic Scores: \n'
+        str_ += ''.join([('{}-{}\n').format(e['player_id'], e['score'])
+                        for e in self.table_all])
+        str_ += '---------\n'
+        str_ += 'Last Hour Scores\n'
+        str_ += ''.join([('{}-{}\n').format(e['player_id'], e['score'])
+                        for e in self.table_last_hour])
+        return str_
+
 
 def main():
     hss = HighScoreService()
-   
-    hss.add_score(1,100)
-    hss.add_score(2,300)
-    hss.add_score(1,250)
+
+    hss.add_score(1, 100)
+    hss.add_score(2, 300)
+    hss.add_score(1, 250)
 
     table = hss.get_table()
     table = hss.get_last_hour_table()
     table_all, table_last_hour = hss.update()
     print(hss)
 
-if __name__=="__main__":
+if __name__ == "__main__":
     main()
