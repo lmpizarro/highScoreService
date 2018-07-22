@@ -47,7 +47,8 @@ class MongoHighScore(HighScoreService):
     def get_table(self):
         # Returns the table ordered by ranking.
         q = {'$lt':datetime.now()}
-        return self.__group_reduce(q)
+        self.table_all =  self.__group_reduce(q)
+        return self.table_all
 
     def get_last_hour_table(self):
         # Returns the table ordered by ranking.
@@ -55,7 +56,8 @@ class MongoHighScore(HighScoreService):
         d = timedelta(hours=1)
         tm = (t - d)
         q = {'$gt':tm}
-        return self.__group_reduce(q)
+        self.table_last_hour = self.__group_reduce(q)
+        return self.table_last_hour
 
 
 def genOlder():
@@ -86,10 +88,11 @@ def main():
     #hss.add_score(2,300)
     #hss.add_score(1,250)
 
-    table = hss.get_table()
-    print hss.tableToStr(table)
-    table = hss.get_last_hour_table()
-    print hss.tableToStr(table)
+    table_all = hss.get_table()
+    table_last_hour = hss.get_last_hour_table()
+    table_all, table_last_hour = hss.update()
+    print(hss)
+
 
 if __name__=="__main__":
     main()
