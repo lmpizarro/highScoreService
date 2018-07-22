@@ -34,7 +34,8 @@ class MemScoreService(HighScoreService):
     def get_table(self):
         # Returns the table ordered by ranking.
         reduc = self.__group_reduce(self.db)
-        return self.__list_tupple_to_list_dict(reduc) 
+        self.table_all = self.__list_tupple_to_list_dict(reduc) 
+        return self.table_all
 
 
     def get_last_hour_table(self):
@@ -50,7 +51,9 @@ class MemScoreService(HighScoreService):
 
         reduc = self.__group_reduce(db_time_filtered)
 
-        return self.__list_tupple_to_list_dict(reduc) 
+        self.table_last_hour = self.__list_tupple_to_list_dict(reduc) 
+        return self.table_last_hour
+
 
 def genOlder():
     Score= namedtuple('Score','score time')
@@ -88,10 +91,10 @@ def main():
     #hss.add_score(2,300)
     #hss.add_score(1,250)
 
-    table = hss.get_table()
-    print hss.tableToStr(table)
-    table = hss.get_last_hour_table()
-    print hss.tableToStr(table)
+    table_all = hss.get_table()
+    table_last_hour = hss.get_last_hour_table()
+    table_all, table_last_hour = hss.update()
+    print(hss)
 
 if __name__=="__main__":
     main()
