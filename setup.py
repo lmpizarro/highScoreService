@@ -8,7 +8,7 @@ with open('README.md') as f:
     readme = f.read()
 
 setup(
-    name='highScoreService',
+    name='HighScoreService',
     version='0.1.0',
     description='Memory and MongoDb High Score Service',
     long_description=readme,
@@ -17,5 +17,6 @@ setup(
     url='https://github.com/lmpizarro/highScoreService',
     license=readme,
     packages=find_packages(exclude=('tests', 'docs'))
+
 )
 
