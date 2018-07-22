@@ -5,9 +5,13 @@ from highScoreService import HighScoreService
 
 
 class MongoHighScore(HighScoreService):
-
+    '''
+    Implements in mongo HighScoreService
+    '''
     def __init__(self, clear=False):
-        # create DB
+        '''
+        constructor
+        '''
         self.client = MongoClient('localhost', 27017)
 
         self.db = self.client['Score_DB']
@@ -18,12 +22,17 @@ class MongoHighScore(HighScoreService):
             self.table.drop()
 
     def add_score(self, player_id, score):
-        # Add score information
+        '''
+        # Add score information for mongoScoreService
+        '''
         t_t = datetime.now()
         self.table.insert_one(
             {'player_id': player_id, 'score': score, 'time_tag': t_t})
 
     def __group_reduce(self, q):
+        '''
+        Group by player_id and reduce scores in mongoScoreService
+        '''
         # clean auxiliary collection
         self.reduce.drop()
 
@@ -47,13 +56,17 @@ class MongoHighScore(HighScoreService):
         return res
 
     def get_table(self):
-        # Returns the table ordered by ranking.
+        '''
+        Returns the historic table ordered by ranking.
+        '''
         q = {'$lt': datetime.now()}
         self.table_all = self.__group_reduce(q)
         return self.table_all
 
     def get_last_hour_table(self):
-        # Returns the table ordered by ranking.
+        '''
+        Returns the last hour table ordered by ranking.
+        '''
         t = datetime.now()
         d = timedelta(hours=1)
         tm = (t - d)
@@ -63,6 +76,9 @@ class MongoHighScore(HighScoreService):
 
 
 def genOlder():
+    '''
+     Generates the precondition for the tests
+    '''
     tinit = datetime.now()
     d = timedelta(hours=3)
     tm = (tinit - d)
@@ -88,6 +104,9 @@ def genOlder():
 
 
 def main():
+    '''
+    main() in mongoScoreService
+    '''
     hss = genOlder()  # MongoHighScore()
 
     # hss.add_score(1,100)
@@ -101,4 +120,7 @@ def main():
 
 
 if __name__ == "__main__":
+    '''
+    To run mongoScore main() in its own module
+    '''
     main()

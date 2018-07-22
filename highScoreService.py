@@ -4,39 +4,50 @@ from collections import namedtuple
 
 
 class HighScoreService(object):
-
+    '''
+    Base Class for highScoreService
+    '''
     def __init__(self):
-        # constructor
+        '''
+        constructor
+        '''
         self.table_all = [{'player_id': 0, 'score': 0}]
         self.table_last_hour = [{'player_id': 0, 'score': 0}]
         pass
 
     def add_score(self, player_id, score):
-        # Add score information
+        '''
+        Add score information
+        '''
         pass
 
     def get_table(self):
-        # Returns the table ordered by ranking.
+        '''
+        Returns the table ordered by ranking.
+        '''
         self.table_all = [{'player_id': 0, 'score': 0}]
         return self.table_all
 
     def get_last_hour_table(self):
-        # Returns the table ordered by ranking.
+        '''
+        Returns the table ordered by ranking.
+        '''
         self.table_last_hour = [{'player_id': 0, 'score': 0}]
         return self.table_last_hour
 
     def update(self):
+        '''
+        Update the state of the object
+        '''
         self.get_table()
         self.get_last_hour_table()
         return self.table_all, self.table_last_hour
 
-    def tableToStr(self, table):
-        str_ = ''
-        for e in table:
-            str_ += ('{}-{}\n').format(e['player_id'], e['score'])
-        return str_
 
     def __str__(self):
+        '''
+        Return string representation of highScoreService
+        '''
         str_ = 'High Scores: \n'
         str_ = 'Historic Scores: \n'
         str_ += ''.join([('{}-{}\n').format(e['player_id'], e['score'])
@@ -49,6 +60,9 @@ class HighScoreService(object):
 
 
 def main():
+    '''
+    main() in highScoreService
+    '''
     hss = HighScoreService()
 
     hss.add_score(1, 100)
@@ -61,4 +75,7 @@ def main():
     print(hss)
 
 if __name__ == "__main__":
+    '''
+    To run highScore main() in its own module
+    '''
     main()

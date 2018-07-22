@@ -5,20 +5,29 @@ from highScoreService import HighScoreService
 
 
 class MemScoreService(HighScoreService):
-
+    '''
+    Implements in memory HighScoreService
+    '''
     def __init__(self):
-        # create DB
+        '''
+        constructor
+        '''
         self.db = {}
         self.Score = namedtuple('Score', 'score time')
 
     def add_score(self, player_id, score):
-        # Add score information
+        '''
+        Add score information for MemScoreService
+        '''
         d = self.Score(score=score, time=datetime.now())
         if str(player_id) not in self.db:
             self.db[str(player_id)] = []
         self.db[str(player_id)].append(d)
 
     def __group_reduce(self, db):
+        '''
+        Group by player_id and reduce scores in MemScoreService
+        '''
         ScoreCard = namedtuple('ScoreCard', 'player_id score')
         Ranking = []
         for p_id in db:
@@ -28,17 +37,25 @@ class MemScoreService(HighScoreService):
         return sorted(Ranking, key=attrgetter('score'), reverse=True)
 
     def __list_tupple_to_list_dict(self, lt):
+        '''
+        Convert a list of named tupples to dictionaries
+        '''
         l_dict_r = [{'player_id': r.player_id, 'score': r.score} for r in lt]
         return l_dict_r
 
+
     def get_table(self):
-        # Returns the table ordered by ranking.
+        '''
+        Returns the historic table ordered by ranking.
+        '''
         reduc = self.__group_reduce(self.db)
         self.table_all = self.__list_tupple_to_list_dict(reduc)
         return self.table_all
 
     def get_last_hour_table(self):
-        # Returns the table ordered by ranking.
+        '''
+        Returns the last hour table ordered by ranking.
+        '''
         h = self.get_table()
         t = datetime.now()
         d = timedelta(hours=1)
@@ -55,7 +72,9 @@ class MemScoreService(HighScoreService):
 
 
 def genOlder():
-
+    '''
+     Generates the precondition for the tests
+    '''
     tinit = datetime.now()
 
     Score = namedtuple('Score', 'score time')
@@ -89,6 +108,9 @@ def genOlder():
 
 
 def main():
+    '''
+    main() in memScoreService
+    '''
     hss = genOlder()  # MemScoreService()
 
     # hss.add_score(1,100)
@@ -101,4 +123,7 @@ def main():
     print(hss)
 
 if __name__ == "__main__":
+    '''
+    To run memScore main() in its own module
+    '''
     main()
