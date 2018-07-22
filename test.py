@@ -1,3 +1,8 @@
+''' A test module for High Score Service Modules
+.. moduleauthor:: Luis Maria Pizarro <lmpizarro@gmail.com>
+
+'''
+
 import unittest
 import mongoHighScore as mh
 import memScoreService as hs

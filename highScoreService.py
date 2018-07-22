@@ -1,3 +1,8 @@
+''' A base High Score Service Module
+.. moduleauthor:: Luis Maria Pizarro <lmpizarro@gmail.com>
+
+'''
+
 from datetime import datetime, timedelta
 from operator import attrgetter
 from collections import namedtuple
@@ -23,14 +28,16 @@ class HighScoreService(object):
 
     def get_table(self):
         '''
-        Returns the table ordered by ranking.
+        Returns:
+            the historic table ordered by ranking.
         '''
         self.table_all = [{'player_id': 0, 'score': 0}]
         return self.table_all
 
     def get_last_hour_table(self):
         '''
-        Returns the table ordered by ranking.
+        Returns:
+            the last hour table ordered by ranking.
         '''
         self.table_last_hour = [{'player_id': 0, 'score': 0}]
         return self.table_last_hour
@@ -38,6 +45,9 @@ class HighScoreService(object):
     def update(self):
         '''
         Update the state of the object
+        Returns:
+           historic table
+           last hour table
         '''
         self.get_table()
         self.get_last_hour_table()
@@ -46,7 +56,8 @@ class HighScoreService(object):
 
     def __str__(self):
         '''
-        Return string representation of highScoreService
+        Returns:
+            string representation of highScoreService
         '''
         str_ = 'High Scores: \n'
         str_ = 'Historic Scores: \n'

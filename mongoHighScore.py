@@ -1,3 +1,8 @@
+''' A mongo High Score Service Module
+.. moduleauthor:: Luis Maria Pizarro <lmpizarro@gmail.com>
+
+'''
+
 import pymongo
 from pymongo import MongoClient
 from datetime import datetime, timedelta

@@ -1,3 +1,8 @@
+''' A memory High Score Service Module
+.. moduleauthor:: Luis Maria Pizarro <lmpizarro@gmail.com>
+
+'''
+
 from datetime import datetime, timedelta
 from operator import attrgetter
 from collections import namedtuple
@@ -12,12 +17,21 @@ class MemScoreService(HighScoreService):
         '''
         constructor
         '''
+        # creates an empty DB as a dictionary
+        # the player_id will be the key
         self.db = {}
+        # defines a Score named tuple 
         self.Score = namedtuple('Score', 'score time')
 
     def add_score(self, player_id, score):
         '''
         Add score information for MemScoreService
+        to db in a list for each player_id.
+        If the player_id isn't in db, creates a list
+        for a new player_id key
+        Args:
+          player_id (int):  the id for the player
+          score: (int): the score for the player
         '''
         d = self.Score(score=score, time=datetime.now())
         if str(player_id) not in self.db:
@@ -27,6 +41,10 @@ class MemScoreService(HighScoreService):
     def __group_reduce(self, db):
         '''
         Group by player_id and reduce scores in MemScoreService
+        Args:
+            db: a score db to group by player_id and reduce by player_id
+        Returns:
+            An ordered list of ScoreCard
         '''
         ScoreCard = namedtuple('ScoreCard', 'player_id score')
         Ranking = []
@@ -39,6 +57,10 @@ class MemScoreService(HighScoreService):
     def __list_tupple_to_list_dict(self, lt):
         '''
         Convert a list of named tupples to dictionaries
+        Args:
+            An ordered list of ScoreCard
+        Returns:
+            An ordered list of dictionaries
         '''
         l_dict_r = [{'player_id': r.player_id, 'score': r.score} for r in lt]
         return l_dict_r
@@ -46,7 +68,8 @@ class MemScoreService(HighScoreService):
 
     def get_table(self):
         '''
-        Returns the historic table ordered by ranking.
+        Returns:
+            the historic table ordered by ranking.
         '''
         reduc = self.__group_reduce(self.db)
         self.table_all = self.__list_tupple_to_list_dict(reduc)
@@ -54,7 +77,11 @@ class MemScoreService(HighScoreService):
 
     def get_last_hour_table(self):
         '''
-        Returns the last hour table ordered by ranking.
+        A time filter for records older than an hour is
+        applied
+
+        Returns:
+             the last hour table ordered by ranking.
         '''
         h = self.get_table()
         t = datetime.now()
@@ -74,6 +101,8 @@ class MemScoreService(HighScoreService):
 def genOlder():
     '''
      Generates the precondition for the tests
+     Returns:
+       An initializade memScoreService for the tests
     '''
     tinit = datetime.now()
 
