@@ -61,9 +61,9 @@ class MongoHighScore(HighScoreService):
 
 
 def genOlder():
-    t = datetime.now()
+    tinit = datetime.now()
     d = timedelta(hours=3)
-    tm = (t - d)
+    tm = (tinit - d)
 
     hss = MongoHighScore(clear=True)
 
@@ -72,11 +72,16 @@ def genOlder():
     hss.table.insert_one({'player_id':1, 'score':100, 'time_tag':tm})
 
     d = timedelta(hours=.5)
-    tm = (t - d)
+    tm = (tinit - d)
 
     hss.table.insert_one({'player_id':2, 'score':300, 'time_tag':tm})
     hss.table.insert_one({'player_id':1, 'score':300, 'time_tag':tm})
     hss.table.insert_one({'player_id':1, 'score':100, 'time_tag':tm})
+
+    tend = datetime.now()
+
+    print ('Mongo Elapsed Time: {}').format(tend - tinit)
+
 
     return hss
 

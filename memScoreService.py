@@ -56,6 +56,9 @@ class MemScoreService(HighScoreService):
 
 
 def genOlder():
+
+    tinit = datetime.now()
+
     Score= namedtuple('Score','score time')
     
     hss = MemScoreService()
@@ -63,9 +66,8 @@ def genOlder():
     hss.db['2'] = []
 
     
-    t = datetime.now()
     d = timedelta(hours=3)
-    tm = t - d
+    tm = tinit - d
 
 
     d = Score(score=100, time=tm)
@@ -75,12 +77,16 @@ def genOlder():
     hss.db['2'].append(d) 
 
     d = timedelta(hours=.5)
-    tm = t - d
+    tm = tinit - d
     d = Score(score=300, time=tm)
     hss.db['2'].append(d) 
     hss.db['1'].append(d) 
     d = Score(score=100, time=tm)
     hss.db['1'].append(d) 
+
+    tend = datetime.now()
+
+    print ('Memory Elapsed Time: {}').format(tend - tinit)
 
     return hss 
 
