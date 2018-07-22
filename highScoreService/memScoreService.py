@@ -24,14 +24,14 @@ class MemScoreService(HighScoreService):
         self.Score = namedtuple('Score', 'score time')
 
     def add_score(self, player_id, score):
-        '''
-        Add score information for MemScoreService
+        '''Add score information for MemScoreService
         to db in a list for each player_id.
         If the player_id isn't in db, creates a list
         for a new player_id key
-        Args:
-          player_id (int):  the id for the player
-          score: (int): the score for the player
+
+            Args:
+              player_id (int):  the id for the player
+              score: (int): the score for the player
         '''
         d = self.Score(score=score, time=datetime.now())
         if str(player_id) not in self.db:
@@ -99,10 +99,10 @@ class MemScoreService(HighScoreService):
 
 
 def genOlder():
-    '''
-     Generates the precondition for the tests
-     Returns:
-       An initializade memScoreService for the tests
+    '''Generates the precondition for the tests
+
+       Returns:
+           An initializade memScoreService for the tests
     '''
     tinit = datetime.now()
 

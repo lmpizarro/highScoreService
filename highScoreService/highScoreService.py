@@ -45,9 +45,9 @@ class HighScoreService(object):
     def update(self):
         '''
         Update the state of the object
-        Returns:
-           historic table
-           last hour table
+            Returns:
+                historic table
+                last hour table
         '''
         self.get_table()
         self.get_last_hour_table()

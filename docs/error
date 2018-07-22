@@ -1,0 +1,37 @@
+/home/lmpizarro/ENVS/testGlobant/docs/api.rst:4: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/lmpizarro/ENVS/testGlobant/docs/api.rst:5: WARNING: Field list ends without a blank line; unexpected unindent.
+/home/lmpizarro/ENVS/testGlobant/docs/api.rst:2: SEVERE: Duplicate ID: "module-highScoreService".
+/home/lmpizarro/ENVS/testGlobant/docs/api.rst:9: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/lmpizarro/ENVS/testGlobant/docs/api.rst:10: WARNING: Title underline too short.
+
+The ?MemScoreService? module
+------------------
+/home/lmpizarro/ENVS/testGlobant/docs/api.rst:10: WARNING: Title underline too short.
+
+The ?MemScoreService? module
+------------------
+/home/lmpizarro/ENVS/testGlobant/docs/api.rst:12: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/lmpizarro/ENVS/testGlobant/docs/api.rst:13: WARNING: Title underline too short.
+
+The ?MongoScoreService? module
+------------------
+/home/lmpizarro/ENVS/testGlobant/docs/api.rst:13: WARNING: Title underline too short.
+
+The ?MongoScoreService? module
+------------------
+/home/lmpizarro/ENVS/testGlobant/docs/api.rst:14: WARNING: autodoc: failed to import module u'mongoScoreService'; the following exception was raised:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/dist-packages/sphinx/ext/autodoc.py", line 529, in import_object
+    __import__(self.modname)
+ImportError: No module named mongoScoreService
+/home/lmpizarro/ENVS/testGlobant/docs/api.rst:15: WARNING: Explicit markup ends without a blank line; unexpected unindent.
+/home/lmpizarro/ENVS/testGlobant/docs/api.rst:16: WARNING: Title underline too short.
+
+The ?Test ScoreService? module
+------------------
+/home/lmpizarro/ENVS/testGlobant/docs/api.rst:16: WARNING: Title underline too short.
+
+The ?Test ScoreService? module
+------------------
+/home/lmpizarro/ENVS/testGlobant/docs/modules.rst:4: WARNING: toctree contains reference to nonexisting document u'highScoreService'
+/home/lmpizarro/ENVS/testGlobant/docs/modules.rst:: WARNING: document isn't included in any toctree

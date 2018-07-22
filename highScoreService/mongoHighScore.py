@@ -28,9 +28,10 @@ class MongoHighScore(HighScoreService):
 
     def add_score(self, player_id, score):
         ''' Add score information for mongoScoreService
+
         Args:
-          player_id (int):  the id for the player
-          score: (int): the score for the player
+            player_id (int):  the id for the player
+            score: (int): the score for the player
         '''
         t_t = datetime.now()
         self.table.insert_one(
@@ -89,9 +90,10 @@ class MongoHighScore(HighScoreService):
 
 
 def genOlder():
-    ''' Generates the precondition for the tests
+    '''Generates the precondition for the tests
+
      Returns:
-       An initializaded mongoScoreService for the tests
+         An initializaded mongoScoreService for the tests
     '''
     tinit = datetime.now()
     d = timedelta(hours=3)
