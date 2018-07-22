@@ -6,7 +6,9 @@ from collections import namedtuple
 class HighScoreService(object):
 
     def __init__(self):
-        # constructor 
+        # constructor
+        self.table_all = [{'player_id':0, 'score':0}]
+        self.table_last_hour = [{'player_id':0, 'score':0}]
         pass
 
     def add_score(self, player_id, score):
@@ -15,11 +17,18 @@ class HighScoreService(object):
 
     def get_table(self):
         # Returns the table ordered by ranking.
-        pass
+        self.table_all = [{'player_id':0, 'score':0}]
+        return self.table_all
 
     def get_last_hour_table(self):
         # Returns the table ordered by ranking.
-        pass
+        self.table_last_hour = [{'player_id':0, 'score':0}]
+        return self.table_last_hour
+
+    def update(self):
+        self.get_table()
+        self.get_last_hour_table()
+        return self.table_all, self.table_last_hour
 
     def tableToStr(self, table):
       str_=''
@@ -27,6 +36,14 @@ class HighScoreService(object):
          str_ += ('{}-{}\n').format(e['player_id'], e['score'])
       return str_
 
+    def __str__(self):
+         str_ = 'High Scores: \n'
+         str_ = 'Historic Scores: \n'
+         str_ +=''.join([('{}-{}\n').format(e['player_id'], e['score']) for e in self.table_all])
+         str_ += '---------\n'
+         str_ += 'Last Hour Scores\n'
+         str_ +=''.join([('{}-{}\n').format(e['player_id'], e['score']) for e in self.table_last_hour])
+         return str_
 
 def main():
     hss = HighScoreService()
@@ -36,9 +53,9 @@ def main():
     hss.add_score(1,250)
 
     table = hss.get_table()
-    #print hss.tableToStr(table)
     table = hss.get_last_hour_table()
-    #print hss.tableToStr(table)
+    table_all, table_last_hour = hss.update()
+    print(hss)
 
 if __name__=="__main__":
     main()
