@@ -1,11 +1,14 @@
-''' A test module for High Score Service Modules
+# -*- coding: utf-8 -*-
+
+''' A test jj module for High Score Service Modules
 .. moduleauthor:: Luis Maria Pizarro <lmpizarro@gmail.com>
 
 '''
+from  context import highScoreService
 
 import unittest
-import mongoHighScore as mh
-import memScoreService as hs
+import highScoreService.mongoHighScore as mh
+import highScoreService.memScoreService as hs
 
 p_id_get_table = [2, 1]
 sco_get_table = [900, 500]
