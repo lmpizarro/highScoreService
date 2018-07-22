@@ -91,7 +91,7 @@ class MongoHighScore(HighScoreService):
 def genOlder():
     ''' Generates the precondition for the tests
      Returns:
-       An initializade mongoScoreService for the tests
+       An initializaded mongoScoreService for the tests
     '''
     tinit = datetime.now()
     d = timedelta(hours=3)
