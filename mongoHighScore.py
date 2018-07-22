@@ -15,7 +15,7 @@ class MongoHighScore(HighScoreService):
     '''
     def __init__(self, clear=False):
         '''
-        constructor
+        constructor, that creates a connection to a mongoDb database
         '''
         self.client = MongoClient('localhost', 27017)
 
@@ -27,8 +27,10 @@ class MongoHighScore(HighScoreService):
             self.table.drop()
 
     def add_score(self, player_id, score):
-        '''
-        # Add score information for mongoScoreService
+        ''' Add score information for mongoScoreService
+        Args:
+          player_id (int):  the id for the player
+          score: (int): the score for the player
         '''
         t_t = datetime.now()
         self.table.insert_one(
@@ -37,6 +39,10 @@ class MongoHighScore(HighScoreService):
     def __group_reduce(self, q):
         '''
         Group by player_id and reduce scores in mongoScoreService
+        Args:
+           a query condition for a query to score collections in mongo db
+        Returns:
+           an ordered dictionary whith the scores
         '''
         # clean auxiliary collection
         self.reduce.drop()
@@ -62,7 +68,8 @@ class MongoHighScore(HighScoreService):
 
     def get_table(self):
         '''
-        Returns the historic table ordered by ranking.
+        Returns:
+            the historic table ordered by ranking.
         '''
         q = {'$lt': datetime.now()}
         self.table_all = self.__group_reduce(q)
@@ -70,7 +77,8 @@ class MongoHighScore(HighScoreService):
 
     def get_last_hour_table(self):
         '''
-        Returns the last hour table ordered by ranking.
+        Returns:
+            the last hour table ordered by ranking.
         '''
         t = datetime.now()
         d = timedelta(hours=1)
@@ -81,8 +89,9 @@ class MongoHighScore(HighScoreService):
 
 
 def genOlder():
-    '''
-     Generates the precondition for the tests
+    ''' Generates the precondition for the tests
+     Returns:
+       An initializade mongoScoreService for the tests
     '''
     tinit = datetime.now()
     d = timedelta(hours=3)
