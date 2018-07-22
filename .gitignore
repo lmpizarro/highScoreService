@@ -1,3 +1,6 @@
 *.pyc
 tmp
 *.txt
+build
+dist
+highScoreService.egg-info
