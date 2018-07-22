@@ -18,7 +18,7 @@ class Test_Score(unittest.TestCase):
     '''
     '''
     def test_get_table(self):
-        '''
+        '''Test get_table for mongo service 
         '''
         hss = mh.genOlder()
         table = hss.get_table()
@@ -27,7 +27,7 @@ class Test_Score(unittest.TestCase):
             self.assertEqual(sco_get_table[i], t['score'])
 
     def test_get_last_hour_table(self):
-        '''
+        ''' Test get last hour table for mongo service
         '''
         hss = mh.genOlder()
         table = hss.get_last_hour_table()
@@ -36,7 +36,7 @@ class Test_Score(unittest.TestCase):
             self.assertEqual(sco_get_last_hour_table[i], t['score'])
 
     def test_get_table_(self):
-        '''
+        '''Test get_table for memory service
         '''
         hss = hs.genOlder()
         table = hss.get_table()
@@ -45,7 +45,7 @@ class Test_Score(unittest.TestCase):
             self.assertEqual(sco_get_table[i], t['score'])
 
     def test_get_last_hour_table_(self):
-        '''
+        '''Test get last hour table for memory service
         '''
         hss = hs.genOlder()
         table = hss.get_last_hour_table()

@@ -16,7 +16,4 @@ The “MongoScoreService” module
 .. automodule:: mongoHighScore
    :members:
 
-The “Test ScoreService” module
-------------------------------
-.. automodule:: test
-   :members:
+

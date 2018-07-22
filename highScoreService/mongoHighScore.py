@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 ''' A mongo High Score Service Module
 .. moduleauthor:: Luis Maria Pizarro <lmpizarro@gmail.com>
 
