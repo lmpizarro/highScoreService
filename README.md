@@ -2,7 +2,8 @@
 
 This modules solves the problem in two differents manners, in the ```class
 MemScoreService``` the state of the score is mantained in memory, in the ```class
-MongoScoreService``` such state is mantained in a mongoDb database
+MongoScoreService``` such state is mantained in a mongoDb database.
+Besides ```MemScoreService```, only uses the standard python library.
 
 Requires [python](https://www.python.org/) 2.7.13
 
