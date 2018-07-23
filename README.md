@@ -1,6 +1,10 @@
 # highScoreService
 
-Requires python 2.7.13
+This modules solves the problem in two differents manners, in the ```class
+MemScoreService``` the state of the score is mantained in memory, in the ```class
+MongoScoreService``` such state is mantained in a mongoDb database
+
+Requires [python](https://www.python.org/) 2.7.13
 
 ```
 $ apt-get install mongodb
