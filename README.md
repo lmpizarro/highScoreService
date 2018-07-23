@@ -1,5 +1,7 @@
 # highScoreService
 
+Requires python 2.7.13
+
 ```
 $ apt-get install mongodb
 
@@ -28,7 +30,7 @@ $ source HSSVENV/bin/activate
 
 ```
 
-To generate the documentation, you must have installed [Sphinx]():
+To generate the documentation, [Sphinx](http://www.sphinx-doc.org/en/master/) must be  installed:
 
 ```
 $ cd docs
