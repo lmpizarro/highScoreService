@@ -10,6 +10,8 @@ Requires [python](https://www.python.org/) 2.7.13
 ```
 $ apt-get install mongodb
 
+$ apt-get install virtualenv
+
 $ virtualenv HSSVENV
 
 $ source HSSVENV/bin/activate
