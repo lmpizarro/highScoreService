@@ -24,6 +24,14 @@ $ source HSSVENV/bin/activate
 
 (HSSENV)$ python -c "from highScoreService import memScoreService"
 
-(HSSENV)$ python -c "from highScoreService import mongoHighScore"
+(HSSENV)$ python -c "from highScoreService import mongoScoreService"
 
+```
+
+To generate the documentation, you must have installed [Sphinx]():
+
+```
+$ cd docs
+
+$ make singlehtml
 ```
