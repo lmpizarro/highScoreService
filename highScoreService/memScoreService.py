@@ -104,7 +104,7 @@ def genOlder():
     '''Generates the precondition for the tests
 
        Returns:
-           An initializade memScoreService for the tests
+           An initialized memScoreService for the tests
     '''
     tinit = datetime.now()
 

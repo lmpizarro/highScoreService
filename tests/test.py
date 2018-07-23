@@ -7,7 +7,7 @@
 from  context import highScoreService
 
 import unittest
-import highScoreService.mongoHighScore as mh
+import highScoreService.mongoScoreService as mh
 import highScoreService.memScoreService as hs
 
 p_id_get_table = [2, 1]

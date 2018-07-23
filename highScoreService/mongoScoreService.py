@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 from highScoreService import HighScoreService
 
 
-class MongoHighScore(HighScoreService):
+class MongoScoreService(HighScoreService):
     '''
     Implements in mongo HighScoreService
     '''
@@ -95,13 +95,13 @@ def genOlder():
     '''Generates the precondition for the tests
 
      Returns:
-         An initializaded mongoScoreService for the tests
+         An initialized mongoScoreService for the tests
     '''
     tinit = datetime.now()
     d = timedelta(hours=3)
     tm = (tinit - d)
 
-    hss = MongoHighScore(clear=True)
+    hss = MongoScoreService(clear=True)
 
     hss.table.insert_one({'player_id': 2, 'score': 300, 'time_tag': tm})
     hss.table.insert_one({'player_id': 2, 'score': 300, 'time_tag': tm})
@@ -125,7 +125,7 @@ def main():
     '''
     main() in mongoScoreService
     '''
-    hss = genOlder()  # MongoHighScore()
+    hss = genOlder()  # MongoScoreService()
 
     # hss.add_score(1,100)
     # hss.add_score(2,300)

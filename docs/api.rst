@@ -13,7 +13,7 @@ The “MemScoreService” module
 
 The “MongoScoreService” module
 ------------------------------
-.. automodule:: mongoHighScore
+.. automodule:: mongoScoreService
    :members:
 
 
