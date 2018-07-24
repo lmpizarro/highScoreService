@@ -5,6 +5,14 @@ MemScoreService``` the state of the score is mantained in memory, in the ```clas
 MongoScoreService``` such state is mantained in a mongoDb database.
 Besides ```MemScoreService```, only uses the standard python library.
 
+### 23/07/2018
+
+Added ```observerPlayer.py ```, it simulates 2 players that insert scores in
+a list, and an observer watch the list for older elements, if an elements gets
+older, the observer, delete it. This version is incomplete, but it would be
+possible to have, the most recent scores in memory and the oldest in a DB.
+ 
+
 Requires [python](https://www.python.org/) 2.7.13
 
 ```
